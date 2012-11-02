@@ -16,5 +16,7 @@ public abstract class Cell implements Serializable {
 	public abstract boolean setContent(Content content);
 
 	public abstract boolean isAccesible();
+	
+	public abstract Content getContent();
 
 }

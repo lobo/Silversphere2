@@ -58,10 +58,13 @@ public class Parser {
 					rows++;
 				}
 			}
+			System.out.println(rows);
+			System.out.println(columns);
 			board = new Board(rows, columns);
 			if (buffer != null) {
 				buffer.close();
 			}
+
 			buffer = new BufferedReader(new FileReader(file));
 			rows = 0;
 			while ((line = (buffer.readLine())) != null) {
@@ -112,7 +115,10 @@ public class Parser {
 		}
 		while (index < columns) {
 			p = new Point(rowActual, index);
+			System.out.println(rowActual);
+			System.out.println(index);
 			symbol = line.charAt(index);
+			System.out.println(symbol);
 			checkSymbolExistance(symbol);
 			switch (symbol) {
 			case PLAYER: {
@@ -152,6 +158,7 @@ public class Parser {
 				break;
 			}
 			}
+			index++;
 		}
 
 	}
@@ -164,9 +171,10 @@ public class Parser {
 	 */
 
 	public void checkSymbolExistance(char symbol) {
-		if (symbol != 'G' || symbol != 'T' || symbol != '#' || symbol != 'B'
-				|| symbol != 'C' || symbol != ' ' || symbol != '@'
-				|| symbol != 'K') {
+		System.out.println(symbol);
+		if (symbol != 'G' && symbol != 'T' && symbol != '#' && symbol != 'B'
+				&& symbol != 'C' && symbol != ' ' && symbol != '@'
+				&& symbol != 'K') {
 			throw new ParsingException();
 		}
 	}

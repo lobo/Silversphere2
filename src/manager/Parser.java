@@ -56,10 +56,6 @@ public class Parser {
 						throw new ParsingException();
 					}
 					rows++;
-					if (line.length() != columns) {
-						throw new ParsingException();
-					}
-					rows++;
 				}
 			}
 			board = new Board(rows, columns);

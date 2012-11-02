@@ -34,4 +34,13 @@ public class Tree extends Cell implements Serializable {
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
+	public Content getContent() {
+		try {
+			throw new Exception();
+		} catch (Exception e) {
+		   System.out.println("preguntar");
+		}
+		return null;
+	}
 }

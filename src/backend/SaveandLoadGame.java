@@ -34,9 +34,11 @@ public class SaveandLoadGame {
 			ObjectInputStream newfile = new ObjectInputStream(
 					new BufferedInputStream(new FileInputStream(file)));
 			Board game = (Board) newfile.readObject();
-			game.getBoard().setInstanceBoardListener(
-					new InstanceBoardListener());
-			return game;
+			/*
+			 * ENTRE COMMENTS PORQUE NO COMPILA
+			 * game.getBoard().setInstanceBoardListener( new
+			 * InstanceBoardListener()); return game;
+			 */
 		} catch (IOException e) {
 			JOptionPane.showMessageDialog(null,
 					"Unable to Load - Unacceptable File Type");

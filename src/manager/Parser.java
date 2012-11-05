@@ -115,10 +115,7 @@ public class Parser {
 		}
 		while (index < columns) {
 			p = new Point(rowActual, index);
-			System.out.println(rowActual);
-			System.out.println(index);
 			symbol = line.charAt(index);
-			System.out.println(symbol);
 			checkSymbolExistance(symbol);
 			switch (symbol) {
 			case PLAYER: {

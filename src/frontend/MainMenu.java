@@ -60,7 +60,7 @@ public class MainMenu extends JFrame {
 					if (value == JFileChooser.APPROVE_OPTION) {
 						File archive = fileOpen.getSelectedFile();
 						try {
-							new GamePlay(archive);
+							new GamePly(archive);
 						} catch (Exception exc) {
 							JOptionPane.showMessageDialog(
 									MainMenu.this.getContentPane(),

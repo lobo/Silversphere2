@@ -16,16 +16,12 @@ import manager.Parser;
 import backend.Board;
 import exceptions.ParsingException;
 
-public class GamePlay extends JFrame {
+public class GamePly extends JFrame {
 
 	private Board board;
-<<<<<<< HEAD
-	private final GamePanel gp;
-=======
-	private GamePanel gp;
->>>>>>> 0fbf34c02731d7c621354735dfc9178d6c78ddbf
+	private GamePan gp;
 
-	public GamePlay(File archive) throws IOException {
+	public GamePly(File archive) throws IOException {
 		try {
 			board = (new Parser()).parse(archive);
 		} catch (ParsingException exc) {
@@ -38,19 +34,12 @@ public class GamePlay extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(new BorderLayout());
 		setVisible(true);
-		createMenuBar();
+		//createMenuBar();
 		setSize(300, 300);
-<<<<<<< HEAD
-		gp = new GamePanel(board, this);
-		add(gp);
-		gp.drawBoard();
-		// centerScreen();
-=======
-		gp= new GamePanel(board,this);
+		gp= new GamePan(board,this);
 		add(gp);
 		gp.drawBoard();
 		//centerScreen();
->>>>>>> 0fbf34c02731d7c621354735dfc9178d6c78ddbf
 	}
 
 	private void createMenuBar() {

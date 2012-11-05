@@ -15,6 +15,7 @@ import backend.Interruptor;
 import backend.Player;
 import backend.Target;
 import backend.Tree;
+import backend.Water;
 import exceptions.ParsingException;
 
 public class Parser {
@@ -30,6 +31,7 @@ public class Parser {
 	private static final char WATER = '#';
 	private static final char ICE = 'C';
 	private static final char INTERRUPTOR = 'K';
+	private static final char FLOOR = ' ';
 
 	/**
 	 * This method parses a file to check if all the data is correct.
@@ -51,6 +53,7 @@ public class Parser {
 				if (line.length() > 1) {
 					if (columns == 0) {
 						columns = line.length();
+						System.out.println(columns);
 					}
 					if (line.length() != columns) {
 						throw new ParsingException();
@@ -139,7 +142,7 @@ public class Parser {
 				break;
 			}
 			case WATER: {
-				board.putCell(new Tree(), p);
+				board.putCell(new Water(), p);
 				break;
 			}
 			case ICE: {
@@ -150,6 +153,10 @@ public class Parser {
 			}
 			case INTERRUPTOR: {
 				board.putCell(new Interruptor(), p);
+				break;
+			}
+			case FLOOR: {
+				board.putCell(new Floor(), p);
 				break;
 			}
 			}

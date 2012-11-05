@@ -47,6 +47,6 @@ public class Floor extends Cell implements ContentOperations, Serializable {
 
 	@Override
 	public boolean isAccesible() {
-		return content != null;
+		return content == null;
 	}
 }

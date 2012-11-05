@@ -19,7 +19,7 @@ import exceptions.ParsingException;
 public class GamePly extends JFrame {
 
 	private Board board;
-	private GamePan gp;
+	private final GamePan gp;
 
 	public GamePly(File archive) throws IOException {
 		try {
@@ -34,12 +34,12 @@ public class GamePly extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(new BorderLayout());
 		setVisible(true);
-		//createMenuBar();
+		createMenuBar();
 		setSize(300, 300);
-		gp= new GamePan(board,this);
+		gp = new GamePan(board, this);
 		add(gp);
 		gp.drawBoard();
-		//centerScreen();
+		// centerScreen();
 	}
 
 	private void createMenuBar() {

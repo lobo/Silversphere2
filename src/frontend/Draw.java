@@ -56,6 +56,7 @@ public class Draw {
 				return loadImage(images.get(cell.getClass()));
 			} else {
 				// fijar back x getContent en Cell
+				System.out.println(cell.getContent().getClass());
 				return loadImage(images.get(cell.getContent().getClass()));
 			}
 		}

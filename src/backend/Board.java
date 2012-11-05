@@ -70,11 +70,8 @@ public class Board implements Serializable {
 
 	/* Parser use only */
 	public boolean putContent(Content cont, Point position) {
-		if (board[(int) position.getX()][(int) position.getY()] == null) {
-			putCell(new Floor(), position);
-			board[(int) position.getX()][(int) position.getY()]
-					.setContent(cont);
-		}
+
+		board[(int) position.getX()][(int) position.getY()].setContent(cont);
 		return true;
 	}
 

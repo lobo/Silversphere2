@@ -19,6 +19,7 @@ import exceptions.ParsingException;
 public class GamePlay extends JFrame {
 
 	private Board board;
+	private GamePanel gp;
 
 	public GamePlay(File archive) throws IOException {
 		try {
@@ -35,7 +36,10 @@ public class GamePlay extends JFrame {
 		setVisible(true);
 		createMenuBar();
 		setSize(300, 300);
-		centerScreen();
+		gp= new GamePanel(board,this);
+		add(gp);
+		gp.drawBoard();
+		//centerScreen();
 	}
 
 	private void createMenuBar() {

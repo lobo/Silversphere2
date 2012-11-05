@@ -52,6 +52,7 @@ public class GamePlay extends JFrame {
 		menu.add(save);
 		menu.add(gotoMenu);
 		menu.add(quit);
+		setJMenuBar(menuBar);
 
 	}
 

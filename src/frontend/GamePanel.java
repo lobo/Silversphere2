@@ -1,0 +1,55 @@
+package frontend;
+
+import gui.BoardPanel;
+
+import java.awt.Color;
+import java.io.IOException;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import backend.Board;
+
+public class GamePanel extends JPanel {
+
+	private static final int CELL_SIZE = 30;
+
+	private Board board;
+	private BoardPanel bpanel;
+	private JFrame frame;
+	
+	private Draw paint;
+
+	public GamePanel(Board b, JFrame frame) {
+
+		this.frame = frame;
+		
+		try {
+			paint = new Draw();
+		} catch (IOException e) {
+			new ErrorWindow("Error al cargar imagenes", frame);
+		}
+
+		setLayout(null);
+		setSize((b.getWidth()) * CELL_SIZE, (b.getHeight()) * CELL_SIZE);
+
+		board = b;
+		bpanel = new BoardPanel(board.getHeight(), board.getWidth(), CELL_SIZE);
+		bpanel.setBackground(Color.WHITE);
+
+		
+		add(bpanel);
+	}
+	
+	public void drawBoard() throws IOException {
+		for(int i = 0;i<board.getWidth();i++){
+			for(int j = 0;j<board.getHeight();j++){
+				if(board.at(i, j).equals(EmptyCell.class) && !board.at(i, j).hasElement()){
+					bpanel.clearImage(i, j);
+				}
+				bpanel.setImage(i, j, paint.drawCell(board, i, j));
+			}
+		}
+		bpanel.repaint();
+		
+}
+	

@@ -16,16 +16,12 @@ public class Ice extends Box implements Serializable {
 	@Override
 	public boolean move(Point boxActualPlace, Cardinal cardinal) {
 
-		Point boxNextPlace = this.getBoard().SetPositionCardinal(
-				boxActualPlace, cardinal);
+		Point boxNextPlace = this.getBoard().SetPositionCardinal(boxActualPlace, cardinal);
 
-		while ((((ContentOperations) board.getCell(boxNextPlace)).getContent() != null)
-				|| (board.getCell(boxNextPlace) instanceof Water && board
-						.getCell(boxActualPlace) instanceof Water)) {
+		while ((((ContentOperations) board.getCell(boxNextPlace)).getContent() != null) || (board.getCell(boxNextPlace) instanceof Water && board.getCell(boxActualPlace) instanceof Water)) {
 			super.move(boxActualPlace, cardinal);
 			boxActualPlace = boxNextPlace;
-			boxNextPlace = this.getBoard().SetPositionCardinal(boxNextPlace,
-					cardinal);
+			boxNextPlace = this.getBoard().SetPositionCardinal(boxNextPlace,cardinal);
 		}
 
 		return true;
@@ -33,8 +29,7 @@ public class Ice extends Box implements Serializable {
 
 	@Override
 	public boolean remove() {
-		((ContentOperations) (this.getBoard().getCell(this.getPosition())))
-				.removeContent();
+		((ContentOperations) (this.getBoard().getCell(this.getPosition()))).removeContent();
 		return true;
 	}
 }

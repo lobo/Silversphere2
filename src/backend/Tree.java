@@ -37,10 +37,6 @@ public class Tree extends Cell implements Serializable {
 
 	@Override
 	public Content getContent() {
-		try {
-			throw new Exception();
-		} catch (Exception e) {
-		}
 		return null;
 	}
 }

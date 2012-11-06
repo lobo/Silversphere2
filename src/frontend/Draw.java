@@ -46,13 +46,19 @@ public class Draw {
 		Cell cell = board.getCell(new Point(row, col));
 		if (cell instanceof Tree || cell instanceof Water) {
 			return loadImage(images.get(cell.getClass()));
-		} else if (cell instanceof WaterBox) {
+		}else if(cell instanceof Target){
+			if(board.isInterruptorActive()){
+				return loadImage(images.get(cell.getClass()));
+			}
+			else
+				return loadImage(images.get(Floor.class));
+		}
+		else if (cell instanceof WaterBox) {
 			if (!cell.isAccesible()) {
 				if(element){
 					element=false;
 					return colorize(loadImage(images.get(Box.class)), new Color(
 							100, 100, 100));
-				
 				}
 				else
 				{

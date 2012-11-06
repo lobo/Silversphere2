@@ -7,26 +7,21 @@ public class Interruptor extends Floor implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Creates a new Interrupter
+	 * 
+	 */
 	public Interruptor() {
 		super();
 	}
 
-	public boolean activation() {
-		if (this.getContent() instanceof Ice) {
-			this.getContent().getBoard().activateInterruptor();
-			return true;
-		}
-		return false;
-	}
-
-	@Override
+	/**
+	 * Sets content from actual to cardinal given
+	 * 
+	 * @return True if able to set content successfully, False if not
+	 */
 	public boolean setContent(Content content, Point actual, Cardinal cardinal) {
-		boolean ableToSetContent = super.setContent(content, actual, cardinal);
-		if (ableToSetContent) {
-			activation();
-			return true;
-		}
-		return false;
+		return super.setContent(content, actual, cardinal);
 	}
 
 }

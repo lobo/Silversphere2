@@ -97,6 +97,7 @@ public class Parser {
 	private void checkElementsValues(String line, int rowActual) {
 		int index = 0;
 		Content element = null;
+		Cell cell = null;
 		Point p;
 		char symbol;
 
@@ -145,7 +146,9 @@ public class Parser {
 				break;
 			}
 			case INTERRUPTOR: {
-				board.putCell(new Interruptor(), p);
+				cell = new Interruptor();
+				board.putCell(cell, p);
+				board.setInterruptor((Interruptor)cell);
 				interruptorExists = true;
 				break;
 			}

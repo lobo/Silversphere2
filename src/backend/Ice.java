@@ -8,12 +8,24 @@ public class Ice extends Box implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private final Board board;
 
+	/**
+	 * Creates a new Ice
+	 * 
+	 * @param point 
+	 * @param board
+	 */
 	public Ice(Point point, Board board) {
 		super(point, board);
 		this.board = board;
 	}
 
-	@Override
+	/**
+	 * Moves Ice from position given in th direction of the cardinal given until the next incoming Cell
+	 * is unaccessible
+	 * 
+	 * @param boxActualPlace
+	 * @param cardinal
+	 */
 	public boolean move(Point boxActualPlace, Cardinal cardinal) {
 
 		Point boxNextPlace = this.getBoard().SetPositionCardinal(boxActualPlace, cardinal);
@@ -31,9 +43,12 @@ public class Ice extends Box implements Serializable {
 		return true;
 	}
 
-	@Override
+	/**
+	 * Removes Ice from play
+	 * 
+	 * @return True always
+	 */
 	public boolean remove() {
-		this.getBoard().activateInterruptor();
 		((ContentOperations) (this.getBoard().getCell(this.getPosition()))).removeContent();
 		return true;
 	}

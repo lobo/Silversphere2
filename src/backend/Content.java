@@ -9,17 +9,22 @@ public abstract class Content implements Serializable {
 
 	private final Point position;
 	private final Board board;
-
+	
+	/**
+	 * Creates a new Content
+	 * 
+	 * @param point
+	 * @param board
+	 */
 	public Content(Point point, Board board) {
 		this.position = point;
 		this.board = board;
 	}
 
 	/**
-	 * Sets a new position for the movable
+	 * Sets Content at a given position
 	 * 
 	 * @param direction
-	 *            Cardinal with the direction of movement
 	 */
 	public void setPosition(Cardinal direction) {
 		if ((board.validPosition(position))) {
@@ -28,19 +33,33 @@ public abstract class Content implements Serializable {
 		}
 	}
 
-	public abstract boolean move(Point going, Cardinal cardinal);
-
+	/**
+	 * Moves Content from one Position to a Cardinal given
+	 * 
+	 * @param going
+	 * @param cardinal
+	 * @return True if movement was successful, False if not
+	 */
+	public abstract boolean move(Point actualPlace, Cardinal cardinal);
+	
+	/**
+	 * Removes content from play
+	 * 
+	 * @return True if removal was successful, False if not
+	 */
 	public abstract boolean remove();
 
 	/**
-	 * Gets the board.
+	 * Returns the content's Board
+	 * 
 	 */
 	public Board getBoard() {
 		return board;
 	}
 
 	/**
-	 * Gets the position.
+	 * Returns position of content
+	 * 
 	 */
 	public Point getPosition() {
 		return position;

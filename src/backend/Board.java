@@ -20,7 +20,7 @@ public class Board implements Serializable {
 	public Board(int height, int width) {
 		this.height = height;
 		this.width = width;
-		board = new Cell[height][width]; // queda todo en null
+		board = new Cell[height][width];
 	}
 
 	public Cell[][] getBoard() {

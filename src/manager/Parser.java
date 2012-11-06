@@ -117,6 +117,7 @@ public class Parser {
 			p = new Point(rowActual, index);
 			symbol = line.charAt(index);
 			checkSymbolExistance(symbol);
+			validatePlayer(symbol);
 			switch (symbol) {
 			case PLAYER: {
 				board.putCell(new Floor(), p);
@@ -177,6 +178,18 @@ public class Parser {
 				&& symbol != 'K') {
 			throw new ParsingException();
 		}
+	}
+	
+	/**
+	 * Verifies whether the file is trying to create more than one player in a single game
+	 * 
+	 * @param elem
+	 */
+	public void validatePlayer(char elem){
+		if((elem == PLAYER) && (playerExists))
+			throw new ParsingException();
+		else
+			playerExists = true; 
 	}
 
 }

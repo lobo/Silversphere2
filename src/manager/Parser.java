@@ -1,21 +1,9 @@
 package manager;
 
 import java.awt.Point;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
-import backend.Board;
-import backend.Box;
-import backend.Content;
-import backend.Floor;
-import backend.Ice;
-import backend.Interruptor;
-import backend.Player;
-import backend.Target;
-import backend.Tree;
-import backend.Water;
+import backend.*;
 import exceptions.ParsingException;
 
 public class Parser {
@@ -24,6 +12,8 @@ public class Parser {
 	private int rows = 0;
 	private Board board;
 	boolean playerExists = false;
+	boolean targetExists = false;
+	boolean interruptorExists = false;
 	private static final char PLAYER = '@';
 	private static final char BOX = 'B';
 	private static final char TARGET = 'G';
@@ -116,8 +106,10 @@ public class Parser {
 		while (index < columns) {
 			p = new Point(rowActual, index);
 			symbol = line.charAt(index);
+			
 			checkSymbolExistance(symbol);
-			validatePlayer(symbol);
+			validateExistance(symbol);
+			
 			switch (symbol) {
 			case PLAYER: {
 				board.putCell(new Floor(), p);
@@ -135,6 +127,7 @@ public class Parser {
 			}
 			case TARGET: {
 				board.putCell(new Target(), p);
+				targetExists = true;
 				break;
 			}
 			case TREE: {
@@ -153,6 +146,7 @@ public class Parser {
 			}
 			case INTERRUPTOR: {
 				board.putCell(new Interruptor(), p);
+				interruptorExists = true;
 				break;
 			}
 			case FLOOR: {
@@ -181,15 +175,16 @@ public class Parser {
 	}
 	
 	/**
-	 * Verifies whether the file is trying to create more than one player in a single game
+	 * This method checks if the unique elements are repeated
 	 * 
-	 * @param elem
+	 * @param symbol
+	 *            A char representing the type of element.
 	 */
-	public void validatePlayer(char elem){
-		if((elem == PLAYER) && (playerExists))
+	
+	public void validateExistance(char symbol){
+		if(((symbol == PLAYER) && (playerExists)) || ((symbol == TARGET) && (targetExists)) || ((symbol == INTERRUPTOR) && (interruptorExists))){
 			throw new ParsingException();
-		else
-			playerExists = true; 
+		} 
 	}
 
 }

@@ -13,7 +13,7 @@ public class Board implements Serializable {
 	private int height = 0;
 	private int width = 0;
 	private boolean interruptor = false;
-	private boolean winState = false;
+	private State state = State.PLAYING;
 	private Player player = null;
 
 	private transient BoardListener instanceBoardListener;
@@ -64,14 +64,6 @@ public class Board implements Serializable {
 			board[position.x][position.y]=cell;
 			return true;
 	}
-	
-	public boolean hasWon(){	
-		return winState;
-	}
-	
-	public void changeWinState(){
-		winState = !(winState);
-	}
 
 	/* Parser use only */
 	public boolean putContent(Content cont, Point position) {
@@ -118,6 +110,14 @@ public class Board implements Serializable {
 
 	public void setInstanceBoardListener(BoardListener instanceBoardListener) {
 		this.instanceBoardListener = instanceBoardListener;
+	}
+
+	public State getState() {
+		return state;
+	}
+
+	public void setState(State state) {
+		this.state = state;
 	}
 
 }

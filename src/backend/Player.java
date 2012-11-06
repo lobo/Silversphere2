@@ -15,7 +15,7 @@ public class Player extends Content implements Serializable {
 	// se crea aca la situacion de perder la partida
 	@Override
 	public boolean remove() {
-		this.getBoard().getInstanceBoardListener().gameOver();
+		this.getBoard().setState(State.LOSE);
 		return false;
 	}
 

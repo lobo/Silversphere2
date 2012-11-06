@@ -27,6 +27,7 @@ public class Draw {
 
 	private final HashMap<Class<?>, String> images = new HashMap<Class<?>, String>();
 	private boolean playerPresence = false;
+	private boolean element= true;
 
 	public Draw() throws IOException {
 
@@ -47,7 +48,17 @@ public class Draw {
 			return loadImage(images.get(cell.getClass()));
 		} else if (cell instanceof WaterBox) {
 			if (!cell.isAccesible()) {
-				return loadImage(images.get(cell.getContent().getClass()));
+				if(element){
+					element=false;
+					return colorize(loadImage(images.get(Box.class)), new Color(
+							100, 100, 100));
+				
+				}
+				else
+				{
+					element=true;
+					return loadImage(images.get(cell.getContent().getClass()));
+				}
 			} else {
 				return colorize(loadImage(images.get(Box.class)), new Color(
 						100, 100, 100));
@@ -57,12 +68,11 @@ public class Draw {
 				return loadImage(images.get(cell.getClass()));
 			} else {
 				// fijar back x getContent en Cell
-				 if (cell.getContent().getClass().equals(Player.class)) {
-				 if (!playerPresence) {
-				 playerPresence = true;
+				 if(cell.getContent()!=null && element){
+					 element=false;
 				 return loadImage(images.get(cell.getClass()));
 				 }
-				 }
+				element =true;
 				return loadImage(images.get(cell.getContent().getClass()));
 			}
 		}

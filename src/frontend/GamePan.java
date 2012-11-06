@@ -46,17 +46,15 @@ public class GamePan extends JPanel {
 	public void drawBoard() throws IOException {
 		for (int i = 0; i < board.getHeight(); i++) {
 			for (int j = 0; j < board.getWidth(); j++) {
-				if (board.getCell(new Point(i, j)).equals(Floor.class))
-						//&& !board.getCell(new Point(i, j)).isAccesible()) 
-					{
-					bpanel.clearImage(i, j);
-				}
 				if (board.getCell(new Point(i, j)).getContent() != null) {
 					if (board.getCell(new Point(i, j)).getContent().getClass()
-							.equals(Player.class)
-							&& first) {
+							.equals(Player.class))
+					{
+					//bpanel.clearImage(i, j);
+				}
+				if (board.getCell(new Point(i, j)).getContent() != null) {
+					bpanel.clearImage(i, j);
 						bpanel.appendImage(i, j, paint.drawCell(board, i, j));
-						first = false;
 					}
 				}
 				bpanel.appendImage(i, j, paint.drawCell(board, i, j));

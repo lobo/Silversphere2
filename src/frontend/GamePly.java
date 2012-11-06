@@ -3,6 +3,8 @@ package frontend;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 
@@ -14,6 +16,7 @@ import javax.swing.JOptionPane;
 
 import manager.Parser;
 import backend.Board;
+import backend.Cardinal;
 import exceptions.ParsingException;
 
 public class GamePly extends JFrame {
@@ -37,6 +40,7 @@ public class GamePly extends JFrame {
 		createMenuBar();
 		setSize(300, 300);
 		gp = new GamePan(board, this);
+		handleInput();
 		add(gp);
 		gp.drawBoard();
 		// centerScreen();
@@ -66,5 +70,40 @@ public class GamePly extends JFrame {
 		setLocation(300, 300);
 		setLocation(size.width / 2 - getWidth() / 2, size.height / 2
 				- getHeight() / 2);
+	}
+
+	/**
+	 * Controla el movimiento del Player dependiendo que tecla se presiono
+	 */
+	private void handleInput() {
+		addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(final KeyEvent e) {
+				switch (e.getKeyCode()) {
+				case KeyEvent.VK_LEFT:
+					board.move(Cardinal.WEST);
+					break;
+				case KeyEvent.VK_RIGHT:
+					board.move(Cardinal.EAST);
+					break;
+				case KeyEvent.VK_UP:
+					board.move(Cardinal.NORTH);
+					break;
+				case KeyEvent.VK_DOWN:
+					board.move(Cardinal.SOUTH);
+					break;
+				}
+
+				try {
+					gp.drawBoard();
+					// playerWon();
+					// playerLost();
+
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			}
+
+		});
 	}
 }

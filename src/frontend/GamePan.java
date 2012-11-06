@@ -15,7 +15,7 @@ import backend.Player;
 
 public class GamePan extends JPanel {
 
-	private static final int CELL_SIZE = 30;
+	public static final int CELL_SIZE = 30;
 
 	private final Board board;
 	private final BoardPanel bpanel;

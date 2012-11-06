@@ -3,6 +3,8 @@ package frontend;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.File;
@@ -18,9 +20,11 @@ import manager.Parser;
 import backend.Board;
 import backend.Cardinal;
 import exceptions.ParsingException;
+import frontend.MainMenu;
 
 public class GamePly extends JFrame {
-
+	
+	public static final int CELL_SIZE = 30;
 	private Board board;
 	private final GamePan gp;
 
@@ -38,12 +42,12 @@ public class GamePly extends JFrame {
 		setLayout(new BorderLayout());
 		setVisible(true);
 		createMenuBar();
-		setSize(300, 300);
+		setSize(board.getHeight()*CELL_SIZE + 50, board.getWidth()*CELL_SIZE + 50);
 		gp = new GamePan(board, this);
 		handleInput();
 		add(gp);
 		gp.drawBoard();
-		// centerScreen();
+		centerScreen();
 	}
 
 	private void createMenuBar() {
@@ -61,6 +65,22 @@ public class GamePly extends JFrame {
 		menu.add(gotoMenu);
 		menu.add(quit);
 		setJMenuBar(menuBar);
+		
+		gotoMenu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new MainMenu();
+			}
+		});
+
+		
+		quit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		
+		
 
 	}
 

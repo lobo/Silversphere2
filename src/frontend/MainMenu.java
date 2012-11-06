@@ -6,11 +6,16 @@ import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+
+import backend.Board;
+import backend.SaveandLoadGame;
+
 
 public class MainMenu extends JFrame {
 
@@ -71,6 +76,35 @@ public class MainMenu extends JFrame {
 				}
 			}
 		});
+		
+//		cargar.addMouseListener(new MouseAdapter(){
+//        	@Override
+//            public void mouseClicked(MouseEvent e) {
+//                    switch(e.getID()){
+//                    case MouseEvent.MOUSE_CLICKED:
+//                    	String loaded;
+//                    	JFileChooser fileLoad = new JFileChooser();
+//        				fileLoad.setFileSelectionMode(JFileChooser.FILES_ONLY);
+//        				fileLoad.setAcceptAllFileFilterUsed(false);
+//        				int value = fileLoad.showDialog(MainMenu.this.getContentPane(),
+//        						"Load Game");
+//        				if (value == JFileChooser.APPROVE_OPTION) {
+//        					loaded = fileLoad.getSelectedFile().toString();
+//        				}
+//        				try {
+//    						Board aux = new SaveandLoadGame().LoadGame(loaded);
+//    					} catch (ClassNotFoundException e1) {
+//    						JOptionPane.showMessageDialog(MainMenu.this.getContentPane(),
+//    								"The file was not found, try again");
+//    					} catch (IOException e1) {
+//    						JOptionPane.showMessageDialog(.getContentPane(),
+//    								"An error has occurred while loading the file");
+//                    }
+//        			new GamePly(aux);
+//        	}
+//        	}
+//		});
+                	
 
 		salir.addMouseListener(new MouseAdapter() {
 

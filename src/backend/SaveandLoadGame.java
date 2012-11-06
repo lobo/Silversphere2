@@ -1,20 +1,15 @@
 package backend;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 
 import javax.swing.JOptionPane;
 
-//import frontend.InstanceBoardListener; faltaria este metodo en el front
-
 public class SaveandLoadGame {
 
+	/**
+	 * Creates a new SaveAndLoadGame
+	 * 
+	 */
 	public SaveandLoadGame() {
 	}
 
@@ -22,13 +17,10 @@ public class SaveandLoadGame {
 	 * Save game in new file
 	 * 
 	 * @param board
-	 *            Board to save
 	 * @param file
-	 *            name of the file
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 */
-
 	public void SaveGame(Board board, String file)
 			throws FileNotFoundException, IOException {
 		try {
@@ -45,24 +37,18 @@ public class SaveandLoadGame {
 	/**
 	 * Create a game with saved information
 	 * 
-	 * @see SaveGame
-	 * 
 	 * @param file
-	 *            name of the file
 	 * @return Board in the file.
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 * @throws ClassNotFoundException
 	 */
 
-	public Board LoadGame(String file) throws FileNotFoundException,
-			IOException, ClassNotFoundException {
+	public Board LoadGame(String file) throws FileNotFoundException,IOException, ClassNotFoundException {
 		try {
 			ObjectInputStream newfile = new ObjectInputStream(
 					new BufferedInputStream(new FileInputStream(file)));
 			Board board = (Board) newfile.readObject();
-			// board.setInstanceBoardListener(new InstanceBoardListener()); el
-			// mensaje instanceBoardListener tendria q estar en el front
 			return board;
 		} catch (IOException e) {
 			JOptionPane.showMessageDialog(null,

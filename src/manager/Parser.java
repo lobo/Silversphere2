@@ -1,21 +1,9 @@
 package manager;
 
 import java.awt.Point;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
-import backend.Board;
-import backend.Box;
-import backend.Content;
-import backend.Floor;
-import backend.Ice;
-import backend.Interruptor;
-import backend.Player;
-import backend.Target;
-import backend.Tree;
-import backend.Water;
+import backend.*;
 import exceptions.ParsingException;
 
 public class Parser {
@@ -24,6 +12,8 @@ public class Parser {
 	private int rows = 0;
 	private Board board;
 	boolean playerExists = false;
+	boolean targetExists = false;
+	boolean interruptorExists = false;
 	private static final char PLAYER = '@';
 	private static final char BOX = 'B';
 	private static final char TARGET = 'G';
@@ -107,6 +97,7 @@ public class Parser {
 	private void checkElementsValues(String line, int rowActual) {
 		int index = 0;
 		Content element = null;
+		Cell cell = null;
 		Point p;
 		char symbol;
 
@@ -116,7 +107,10 @@ public class Parser {
 		while (index < columns) {
 			p = new Point(rowActual, index);
 			symbol = line.charAt(index);
+			
 			checkSymbolExistance(symbol);
+			validateExistance(symbol);
+			
 			switch (symbol) {
 			case PLAYER: {
 				board.putCell(new Floor(), p);
@@ -134,6 +128,7 @@ public class Parser {
 			}
 			case TARGET: {
 				board.putCell(new Target(), p);
+				targetExists = true;
 				break;
 			}
 			case TREE: {
@@ -151,7 +146,10 @@ public class Parser {
 				break;
 			}
 			case INTERRUPTOR: {
-				board.putCell(new Interruptor(), p);
+				cell = new Interruptor();
+				board.putCell(cell, p);
+				board.setInterruptor((Interruptor)cell);
+				interruptorExists = true;
 				break;
 			}
 			case FLOOR: {
@@ -177,6 +175,19 @@ public class Parser {
 				&& symbol != 'K') {
 			throw new ParsingException();
 		}
+	}
+	
+	/**
+	 * This method checks if the unique elements are repeated
+	 * 
+	 * @param symbol
+	 *            A char representing the type of element.
+	 */
+	
+	public void validateExistance(char symbol){
+		if(((symbol == PLAYER) && (playerExists)) || ((symbol == TARGET) && (targetExists)) || ((symbol == INTERRUPTOR) && (interruptorExists))){
+			throw new ParsingException();
+		} 
 	}
 
 }

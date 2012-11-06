@@ -9,22 +9,31 @@ public class Water extends Floor implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Creates a new Water
+	 * 
+	 */
 	public Water() {
-
 	}
 
-	@Override
-	public boolean setContent(Content content) {
-		// testing(creo q nunca lo vamos a usar)
-		return false;
-	}
-
-	@Override
+	/**
+	 *Water will always be accessible
+	 *
+	 * @return True Always
+	 */
 	public boolean isAccesible() {
 		return true;
 	}
 
-	@Override
+	/**
+	 * Sets content from actual to cardinal given
+	 * 
+	 * @throws PositionOutOfBoundsException
+	 * @param content
+	 * @param boxActualPlace
+	 * @param cardinal
+	 * @return True if able to set content successfully, False if not
+	 */
 	public boolean setContent(Content content, Point boxActualPlace,Cardinal cardinal) throws PositionOutOfBoundsException {
 		Boolean ableToSetContent = super.setContent(content, boxActualPlace,cardinal);
 		if (ableToSetContent) {
@@ -32,10 +41,6 @@ public class Water extends Floor implements Serializable {
 				return content.remove();
 			} else {
 				content.getBoard().putCell(new WaterBox(), boxActualPlace);
-				/***
-				 * No se si es boxActualPlace, cardinal o otras cosa, porbamos
-				 * con ese
-				 */
 			}
 		}
 		return ableToSetContent;

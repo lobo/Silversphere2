@@ -27,6 +27,7 @@ public class Draw {
 
 	private final HashMap<Class<?>, String> images = new HashMap<Class<?>, String>();
 	private boolean playerPresence = false;
+	private boolean element= true;
 
 	public Draw() throws IOException {
 
@@ -43,11 +44,52 @@ public class Draw {
 
 	public Image drawCell(Board board, int row, int col) throws IOException {
 		Cell cell = board.getCell(new Point(row, col));
-		if (cell instanceof Tree || cell instanceof Water) {
+		if (cell instanceof Tree || cell instanceof Water ) {
 			return loadImage(images.get(cell.getClass()));
-		} else if (cell instanceof WaterBox) {
-			if (!cell.isAccesible()) {
+		}else if(cell instanceof Interruptor){
+			if(cell.isAccesible()){
+				return loadImage(images.get(cell.getClass()));
+			}
+			else if(element){
+				element=false;
+				return loadImage(images.get(Floor.class));
+			}
+			else{
+				element=true;
 				return loadImage(images.get(cell.getContent().getClass()));
+			}
+		}
+		else if(cell instanceof Target){
+			if(cell.isAccesible()){
+			if(board.isInterruptorActive()){
+				return loadImage(images.get(cell.getClass()));
+			}
+			else
+				return loadImage(images.get(Floor.class));
+		}
+		else{
+			if(element){
+				element=false;
+				return loadImage(images.get(Floor.class));
+			}
+			else{
+				element=true;
+				return loadImage(images.get(cell.getContent().getClass()));
+			}
+		}
+	}
+		else if (cell instanceof WaterBox) {
+			if (!cell.isAccesible()) {
+				if(element){
+					element=false;
+					return colorize(loadImage(images.get(Box.class)), new Color(
+							100, 100, 100));
+				}
+				else
+				{
+					element=true;
+					return loadImage(images.get(cell.getContent().getClass()));
+				}
 			} else {
 				return colorize(loadImage(images.get(Box.class)), new Color(
 						100, 100, 100));
@@ -57,16 +99,19 @@ public class Draw {
 				return loadImage(images.get(cell.getClass()));
 			} else {
 				// fijar back x getContent en Cell
-				 if (cell.getContent().getClass().equals(Player.class)) {
-				 if (!playerPresence) {
-				 playerPresence = true;
+				 if(cell.getContent()!=null && element){
+					 element=false;
 				 return loadImage(images.get(cell.getClass()));
 				 }
-				 }
+				element =true;
 				return loadImage(images.get(cell.getContent().getClass()));
 			}
 		}
 
+	}
+	
+	public Image drawFloor() throws IOException {
+		return loadImage(images.get(Floor.class));
 	}
 
 	/**

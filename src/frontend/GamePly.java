@@ -19,6 +19,8 @@ import javax.swing.JOptionPane;
 import manager.Parser;
 import backend.Board;
 import backend.Cardinal;
+import backend.SaveandLoadGame;
+import backend.State;
 import exceptions.ParsingException;
 import frontend.MainMenu;
 
@@ -80,6 +82,13 @@ public class GamePly extends JFrame {
 			}
 		});
 		
+		save.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				saveGame();
+			}
+
+			
+		});
 		
 
 	}
@@ -116,14 +125,46 @@ public class GamePly extends JFrame {
 
 				try {
 					gp.drawBoard();
-					// playerWon();
-					// playerLost();
+					playerWon();
+					playerLost();
 
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
 			}
 
+
 		});
 	}
+	
+	private void playerLost() {
+		if(board.getState().equals(State.LOSE)){
+			new EndScreen(this, "PERDISTE").setVisible(true);
+		}
+		
+	}
+
+	private void playerWon() {
+		if(board.getState().equals(State.WIN)){
+			new EndScreen(this, "GANASTE").setVisible(true);
+		}
+		
+	}
+	
+	private void saveGame() {
+	        String name;
+	        name = (String) JOptionPane.showInputDialog(null, "Ingrese un nombre",
+	        "Guardar Partida",JOptionPane.OK_CANCEL_OPTION);
+	        if(name != null) {
+	        	File saveFolder = new File("saveGames");
+	        	saveFolder.mkdir();
+	        	try{
+	        		new SaveandLoadGame().SaveGame(board,"saveGames/" + name);
+	        } catch (IOException e) {
+				new ErrorWindow("Error al guardar partida", this).setVisible(true);
+				new MainMenu();
+	        }
+	     }
+	}
+	
 }

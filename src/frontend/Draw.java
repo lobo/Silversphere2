@@ -59,7 +59,6 @@ public class Draw {
 				// fijar back x getContent en Cell
 				 if (cell.getContent().getClass().equals(Player.class)) {
 				 if (!playerPresence) {
-				 System.out.println("entro en draw");
 				 playerPresence = true;
 				 return loadImage(images.get(cell.getClass()));
 				 }

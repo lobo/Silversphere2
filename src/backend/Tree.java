@@ -31,7 +31,6 @@ public class Tree extends Cell implements Serializable {
 	@Override
 	public boolean setContent(Content content, Point boxActualPlace,
 			Cardinal cardinal) throws PositionOutOfBoundsException {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

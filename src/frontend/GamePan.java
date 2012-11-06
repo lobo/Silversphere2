@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 
 import backend.Board;
 import backend.Floor;
+import backend.Player;
 
 public class GamePan extends JPanel {
 
@@ -19,6 +20,7 @@ public class GamePan extends JPanel {
 	private final Board board;
 	private final BoardPanel bpanel;
 	private final JFrame frame;
+	private boolean first = true;
 
 	private Draw paint;
 
@@ -47,6 +49,13 @@ public class GamePan extends JPanel {
 				if (board.getCell(new Point(i, j)).equals(Floor.class)
 						&& !board.getCell(new Point(i, j)).isAccesible()) {
 					bpanel.clearImage(i, j);
+				}
+				if (board.getCell(new Point(i, j)).getContent()
+						.equals(Player.class)
+						&& first) {
+					System.out.println("entro en gamepan");
+					bpanel.appendImage(i, j, paint.drawCell(board, i, j));
+					first = false;
 				}
 				bpanel.appendImage(i, j, paint.drawCell(board, i, j));
 			}

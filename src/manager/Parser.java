@@ -53,7 +53,6 @@ public class Parser {
 				if (line.length() > 1) {
 					if (columns == 0) {
 						columns = line.length();
-						System.out.println(columns);
 					}
 					if (line.length() != columns) {
 						throw new ParsingException();

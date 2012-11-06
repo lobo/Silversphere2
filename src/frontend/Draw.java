@@ -26,6 +26,7 @@ import backend.WaterBox;
 public class Draw {
 
 	private final HashMap<Class<?>, String> images = new HashMap<Class<?>, String>();
+	private final boolean playerPresence = false;
 
 	public Draw() throws IOException {
 
@@ -56,7 +57,13 @@ public class Draw {
 				return loadImage(images.get(cell.getClass()));
 			} else {
 				// fijar back x getContent en Cell
-				System.out.println(cell.getContent().getClass());
+				// if (cell.getContent().getClass().equals(Player.class)) {
+				// if (!playerPresence) {
+				// System.out.println("entro en draw");
+				// playerPresence = true;
+				// return loadImage(images.get(cell.getClass()));
+				// }
+				// }
 				return loadImage(images.get(cell.getContent().getClass()));
 			}
 		}

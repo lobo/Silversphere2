@@ -57,13 +57,12 @@ public class Draw {
 				return loadImage(images.get(cell.getClass()));
 			} else {
 				// fijar back x getContent en Cell
-				 if (cell.getContent().getClass().equals(Player.class)) {
-				 if (!playerPresence) {
-				 System.out.println("entro en draw");
-				 playerPresence = true;
-				 return loadImage(images.get(cell.getClass()));
-				 }
-				 }
+				if (cell.getContent().getClass().equals(Player.class)) {
+					if (!playerPresence) {
+						playerPresence = true;
+						return loadImage(images.get(cell.getClass()));
+					}
+				}
 				return loadImage(images.get(cell.getContent().getClass()));
 			}
 		}

@@ -50,13 +50,15 @@ public class GamePan extends JPanel {
 						&& !board.getCell(new Point(i, j)).isAccesible()) {
 					bpanel.clearImage(i, j);
 				}
-				//if (board.getCell(new Point(i, j)).getContent()
-					//	.equals(Player.class)
-						//&& first) {
-					//System.out.println("entro en gamepan");
-					//bpanel.appendImage(i, j, paint.drawCell(board, i, j));
-					//first = false;
-				//}
+				if(board.getCell(new Point(i, j)).getContent()!= null){
+				if (board.getCell(new Point(i, j)).getContent().getClass()
+						.equals(Player.class)
+						&& first) {
+					System.out.println("entro en gamepan");
+					bpanel.appendImage(i, j, paint.drawCell(board, i, j));
+					first = false;
+				}
+			}
 				bpanel.appendImage(i, j, paint.drawCell(board, i, j));
 			}
 		}

@@ -51,6 +51,7 @@ public class Board implements Serializable {
 		if (validPosition(toPoint) && board[toPoint.x][toPoint.y].setContent(player, toPoint,cardinal)) {
 			((ContentOperations) board[player.getPosition().x][player.getPosition().y]).removeContent();
 			player.setPosition(cardinal);
+			
 			AbletoMove = true;
 		} else
 			AbletoMove = false;
@@ -99,7 +100,7 @@ public class Board implements Serializable {
 	}
 
 	public void activateInterruptor() {
-		interruptor = true;
+		interruptor = !(interruptor);
 	}
 
 	public BoardListener getInstanceBoardListener() {

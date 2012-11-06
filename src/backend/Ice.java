@@ -33,6 +33,7 @@ public class Ice extends Box implements Serializable {
 
 	@Override
 	public boolean remove() {
+		this.getBoard().activateInterruptor();
 		((ContentOperations) (this.getBoard().getCell(this.getPosition()))).removeContent();
 		return true;
 	}

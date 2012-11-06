@@ -47,12 +47,24 @@ public class Draw {
 		if (cell instanceof Tree || cell instanceof Water) {
 			return loadImage(images.get(cell.getClass()));
 		}else if(cell instanceof Target){
+			if(cell.isAccesible()){
 			if(board.isInterruptorActive()){
 				return loadImage(images.get(cell.getClass()));
 			}
 			else
 				return loadImage(images.get(Floor.class));
 		}
+		else{
+			if(element){
+				element=false;
+				return loadImage(images.get(Floor.class));
+			}
+			else{
+				element=true;
+				return loadImage(images.get(cell.getContent().getClass()));
+			}
+		}
+	}
 		else if (cell instanceof WaterBox) {
 			if (!cell.isAccesible()) {
 				if(element){

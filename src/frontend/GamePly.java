@@ -19,6 +19,7 @@ import javax.swing.JOptionPane;
 import manager.Parser;
 import backend.Board;
 import backend.Cardinal;
+import backend.State;
 import exceptions.ParsingException;
 import frontend.MainMenu;
 
@@ -116,14 +117,29 @@ public class GamePly extends JFrame {
 
 				try {
 					gp.drawBoard();
-					// playerWon();
-					// playerLost();
+					playerWon();
+					playerLost();
 
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
 			}
 
+
 		});
+	}
+	
+	private void playerLost() {
+		if(board.getState().equals(State.LOSE)){
+			new EndScreen(this, "PERDISTE").setVisible(true);
+		}
+		
+	}
+
+	private void playerWon() {
+		if(board.getState().equals(State.WIN)){
+			new EndScreen(this, "GANASTE").setVisible(true);
+		}
+		
 	}
 }

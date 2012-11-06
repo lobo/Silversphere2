@@ -44,9 +44,22 @@ public class Draw {
 
 	public Image drawCell(Board board, int row, int col) throws IOException {
 		Cell cell = board.getCell(new Point(row, col));
-		if (cell instanceof Tree || cell instanceof Water) {
+		if (cell instanceof Tree || cell instanceof Water ) {
 			return loadImage(images.get(cell.getClass()));
-		}else if(cell instanceof Target){
+		}else if(cell instanceof Interruptor){
+			if(cell.isAccesible()){
+				return loadImage(images.get(cell.getClass()));
+			}
+			else if(element){
+				element=false;
+				return loadImage(images.get(Floor.class));
+			}
+			else{
+				element=true;
+				return loadImage(images.get(cell.getContent().getClass()));
+			}
+		}
+		else if(cell instanceof Target){
 			if(cell.isAccesible()){
 			if(board.isInterruptorActive()){
 				return loadImage(images.get(cell.getClass()));
@@ -95,6 +108,10 @@ public class Draw {
 			}
 		}
 
+	}
+	
+	public Image drawFloor() throws IOException {
+		return loadImage(images.get(Floor.class));
 	}
 
 	/**

@@ -17,8 +17,7 @@ public class Target extends Floor implements Serializable {
 	public boolean setContent(Content content, Point actual, Cardinal cardinal)
 			throws PositionOutOfBoundsException {
 		Boolean ableToSetContent = super.setContent(content, actual, cardinal);
-		if (ableToSetContent && ((this.getContent()) instanceof Player)
-				&& interruptorActive()) {
+		if (ableToSetContent && ((this.getContent()) instanceof Player) && interruptorActive()) {
 			this.getContent().getBoard().getInstanceBoardListener().win();
 		}
 		return ableToSetContent;

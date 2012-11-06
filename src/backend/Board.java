@@ -54,8 +54,6 @@ public class Board implements Serializable {
 			((ContentOperations) board[player.getPosition().x][player
 					.getPosition().y]).removeContent();
 			player.setPosition(cardinal);
-			System.out.println(player.getPosition().x);
-			System.out.println(player.getPosition().y);
 			AbletoMove = true;
 		} else
 			AbletoMove = false;

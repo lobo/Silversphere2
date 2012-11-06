@@ -1,5 +1,6 @@
 package backend;
 
+import java.awt.Point;
 import java.io.Serializable;
 
 public class WaterBox extends Floor implements Serializable {
@@ -8,5 +9,10 @@ public class WaterBox extends Floor implements Serializable {
 
 	public WaterBox() {
 		super();
+	}
+	
+	@Override
+	public boolean setContent(Content content, Point actual, Cardinal cardinal) {
+		return super.setContent(content, actual, cardinal);
 	}
 }

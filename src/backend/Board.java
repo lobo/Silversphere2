@@ -48,13 +48,11 @@ public class Board implements Serializable {
 		Boolean AbletoMove;
 		Point toPoint = SetPositionCardinal(player.getPosition(), cardinal);
 
-		if (validPosition(toPoint)
-				&& board[toPoint.x][toPoint.y].setContent(player, toPoint,
-						cardinal)) {
-			((ContentOperations) board[player.getPosition().x][player
-					.getPosition().y]).removeContent();
+		if (validPosition(toPoint) && board[toPoint.x][toPoint.y].setContent(player, toPoint,cardinal)) {
+			((ContentOperations) board[player.getPosition().x][player.getPosition().y]).removeContent();
 			player.setPosition(cardinal);
-
+			System.out.println(player.getPosition().x);
+			System.out.println(player.getPosition().y);
 			AbletoMove = true;
 		} else
 			AbletoMove = false;
@@ -63,16 +61,17 @@ public class Board implements Serializable {
 	}
 
 	public boolean putCell(Cell cell, Point position) {
-		/* poner if para el case de water, sin resolver aun */
-		board[position.x][position.y] = cell;
-		return true;
+			board[position.x][position.y]=cell;
+			return true;
 	}
 
 	/* Parser use only */
 	public boolean putContent(Content cont, Point position) {
-
-		board[(int) position.getX()][(int) position.getY()].setContent(cont);
-		return true;
+		if(board[position.x][position.y] instanceof ContentOperations && ((ContentOperations)board[position.x][position.y]).getContent()==null){
+			board[position.x][position.y].setContent(cont);
+			return true;
+		}
+		return false;
 	}
 
 	public Cell getCell(Point position) {

@@ -11,7 +11,7 @@ import java.io.ObjectOutputStream;
 
 import javax.swing.JOptionPane;
 
-//import frontend.InstanceBoardListener; faltaria este metodo en el front
+import frontend.InstanceBoardListener;
 
 public class SaveandLoadGame {
 
@@ -61,8 +61,7 @@ public class SaveandLoadGame {
 			ObjectInputStream newfile = new ObjectInputStream(
 					new BufferedInputStream(new FileInputStream(file)));
 			Board board = (Board) newfile.readObject();
-			// board.setInstanceBoardListener(new InstanceBoardListener()); el
-			// mensaje instanceBoardListener tendria q estar en el front
+			board.setInstanceBoardListener(new InstanceBoardListener()); 
 			return board;
 		} catch (IOException e) {
 			JOptionPane.showMessageDialog(null,

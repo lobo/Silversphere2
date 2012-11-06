@@ -18,7 +18,11 @@ public class Ice extends Box implements Serializable {
 
 		Point boxNextPlace = this.getBoard().SetPositionCardinal(boxActualPlace, cardinal);
 		
-		while ((((ContentOperations) board.getCell(boxNextPlace)).getContent() == null)) {
+		if((this.getBoard().getCell(boxNextPlace) instanceof Tree) || (((ContentOperations)(board.getCell(boxNextPlace))).getContent() != null)){
+			return false;
+		}
+		
+		while (!(this.getBoard().getCell(boxNextPlace) instanceof Tree) && ((ContentOperations)(board.getCell(boxNextPlace))).getContent() == null) {
 			super.move(boxActualPlace, cardinal);
 			boxActualPlace = boxNextPlace;
 			boxNextPlace = this.getBoard().SetPositionCardinal(boxNextPlace,cardinal);

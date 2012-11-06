@@ -17,8 +17,7 @@ public class Box extends Content implements Serializable {
 	public boolean move(Point boxActualPlace, Cardinal cardinal)
 			throws PositionOutOfBoundsException {
 
-		Point boxNextPlace = this.getBoard().SetPositionCardinal(
-				boxActualPlace, cardinal);
+		Point boxNextPlace = this.getBoard().SetPositionCardinal(boxActualPlace, cardinal);
 		if (this.getBoard().validPosition(boxNextPlace)) {
 			// posicion valido
 			if (this.getBoard().getCell(boxNextPlace) instanceof ContentOperations && ((ContentOperations) this.getBoard().getCell(boxNextPlace)).getContent() == null) {
@@ -36,7 +35,7 @@ public class Box extends Content implements Serializable {
 					return true;
 				}
 
-			} else if (((ContentOperations) this.getBoard().getCell(boxActualPlace)).getContent() == null) {
+			} else if (((ContentOperations)(this.getBoard().getCell(boxActualPlace))).getContent() == null) {
 				// si se pudo remover bien la caja de su posicion actual
 				// entonces el moviemiento fue un exito
 				return true;

@@ -65,4 +65,10 @@ public class Box extends Content implements Serializable {
 		getBoard().putCell(new WaterBox(), boxActualPlace);
 	}
 
+
+	@Override
+	public boolean interuptorReact() {
+		return false;
+	}
+
 }

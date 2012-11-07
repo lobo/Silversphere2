@@ -43,7 +43,7 @@ public class GamePan extends JPanel {
 		add(bpanel);
 	}
 
-	public void drawBoard() throws IOException {
+	public void drawBoard() {
 		for (int i = 0; i < board.getHeight(); i++) {
 			for (int j = 0; j < board.getWidth(); j++) {
 				bpanel.setImage(i, j, paint.drawFloor());

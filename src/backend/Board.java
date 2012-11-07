@@ -157,7 +157,12 @@ public class Board implements Serializable {
 	 * @return Interrupter interrupter
 	 */
 	public boolean isInterruptorActive() {
-		return (inter.getContent() instanceof Ice);
+		Content aux = inter.getContent();
+		if(aux != null){
+			return (inter.getContent().interuptorReact());
+		}else{
+			return false;
+		}
 	}
 
 	/**

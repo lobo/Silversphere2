@@ -66,4 +66,6 @@ public abstract class Content implements Serializable {
 	}
 	
 	public abstract void react(Point ActualPlace);
+	
+	public abstract boolean interuptorReact();
 }

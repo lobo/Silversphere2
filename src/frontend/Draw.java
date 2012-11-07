@@ -42,7 +42,8 @@ public class Draw {
 
 	}
 
-	public Image drawCell(Board board, int row, int col) throws IOException {
+	public Image drawCell(Board board, int row, int col)  {
+		try{
 		Cell cell = board.getCell(new Point(row, col));
 		if (cell instanceof Tree || cell instanceof Water ) {
 			return loadImage(images.get(cell.getClass()));
@@ -107,11 +108,19 @@ public class Draw {
 				return loadImage(images.get(cell.getContent().getClass()));
 			}
 		}
+		}
+		catch(IOException e){
+			throw new IllegalStateException();
+		}
 
 	}
 	
-	public Image drawFloor() throws IOException {
-		return loadImage(images.get(Floor.class));
+	public Image drawFloor()  {
+		try {
+			return loadImage(images.get(Floor.class));
+		} catch (IOException e) {
+			throw new IllegalStateException();
+		}
 	}
 
 	/**

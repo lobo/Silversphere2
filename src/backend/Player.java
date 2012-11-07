@@ -43,4 +43,10 @@ public class Player extends Content implements Serializable {
 	public void react(Point actualPlace) {
 		remove();
 	}
+
+
+	@Override
+	public boolean interuptorReact() {
+		return false;
+	}
 }

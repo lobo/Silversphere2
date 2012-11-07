@@ -58,4 +58,9 @@ public class Ice extends Box implements Serializable {
 	public void react(Point actualPlace) {
 		remove();
 	}
+	
+	@Override
+	public boolean interuptorReact() {
+		return true;
+	}
 }

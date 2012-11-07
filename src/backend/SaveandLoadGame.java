@@ -53,13 +53,12 @@ public class SaveandLoadGame {
 		} catch (IOException e) {
 			JOptionPane.showMessageDialog(null,
 					"Unable to Load - Unacceptable File Type");
-			e.printStackTrace();
+			throw new IOException();
 		} catch (ClassNotFoundException e) {
 			JOptionPane.showMessageDialog(null,
 					"Unable to Load - Unacceptable File Type");
-			e.printStackTrace();
-		}
-		return null;
+			throw new IOException();
+			}
 	}
 
 }

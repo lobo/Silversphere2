@@ -29,16 +29,15 @@ public class GamePly extends JFrame {
 	public static final int CELL_SIZE = 30;
 	private Board board;
 	private final GamePan gp;
+	
 
 	public GamePly(File archive) throws IOException {
-		try {
-			board = (new Parser()).parse(archive);
-		} catch (ParsingException exc) {
-			JOptionPane.showMessageDialog(null,
-					"El mapa seleccionado es invalido", "Error",
-					JOptionPane.ERROR_MESSAGE);
-		}
-
+		this(createFromArchive(archive));
+		
+			}
+		
+	public GamePly(Board board){
+		this.board=board;
 		setTitle("Silversphere");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(new BorderLayout());
@@ -75,7 +74,6 @@ public class GamePly extends JFrame {
 			}
 		});
 
-		
 		quit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -123,14 +121,10 @@ public class GamePly extends JFrame {
 					break;
 				}
 
-				try {
 					gp.drawBoard();
 					playerWon();
 					playerLost();
 
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
 			}
 
 
@@ -165,6 +159,24 @@ public class GamePly extends JFrame {
 				new MainMenu();
 	        }
 	     }
+	}
+	
+	private static Board createFromArchive(File archive)throws IOException{
+		try {
+			return (new Parser()).parse(archive);
+		} catch (ParsingException exc) {
+			JOptionPane.showMessageDialog(null,
+					"El mapa seleccionado es invalido", "Error",
+					JOptionPane.ERROR_MESSAGE);
+					throw new IOException();
+		}
+		catch (IOException e){
+			JOptionPane.showMessageDialog(null,
+					"El mapa seleccionado es invalido", "Error",
+					JOptionPane.ERROR_MESSAGE);
+				throw new IOException();
+				
+		}
 	}
 	
 }

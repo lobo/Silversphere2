@@ -64,4 +64,6 @@ public abstract class Content implements Serializable {
 	public Point getPosition() {
 		return position;
 	}
+	
+	public abstract void react(Point ActualPlace);
 }

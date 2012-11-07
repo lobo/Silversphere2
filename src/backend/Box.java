@@ -60,5 +60,9 @@ public class Box extends Content implements Serializable {
 	public boolean remove() {
 		return false;
 	}
+	
+	public void react(Point boxActualPlace){
+		getBoard().putCell(new WaterBox(), boxActualPlace);
+	}
 
 }

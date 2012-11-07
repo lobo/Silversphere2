@@ -30,11 +30,12 @@ public class Ice extends Box implements Serializable {
 
 		Point boxNextPlace = this.getBoard().SetPositionCardinal(boxActualPlace, cardinal);
 		
-		if((this.getBoard().getCell(boxNextPlace) instanceof Tree) || (((ContentOperations)(board.getCell(boxNextPlace))).getContent() != null)){
+		if(!(this.getBoard().getCell(boxNextPlace).isAccesible())){
 			return false;
 		}
 		
-		while (!(this.getBoard().getCell(boxNextPlace) instanceof Tree) && ((ContentOperations)(board.getCell(boxNextPlace))).getContent() == null) {
+		
+		while ((this.getBoard().getCell(boxNextPlace).isAccesible()) && ((ContentOperations)(board.getCell(boxActualPlace))).getContent() != null) {
 			super.move(boxActualPlace, cardinal);
 			boxActualPlace = boxNextPlace;
 			boxNextPlace = this.getBoard().SetPositionCardinal(boxNextPlace,cardinal);
@@ -51,5 +52,10 @@ public class Ice extends Box implements Serializable {
 	public boolean remove() {
 		((ContentOperations) (this.getBoard().getCell(this.getPosition()))).removeContent();
 		return true;
+	}
+	
+	@Override
+	public void react(Point actualPlace) {
+		remove();
 	}
 }

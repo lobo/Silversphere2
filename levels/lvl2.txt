@@ -4,7 +4,7 @@ T B #######T
 T B #######T
 T B ##  TT#T
 T B ###B T#T
-T  C### ###T
+T  C### ## T
 T   #######T
 T  K###  ##T
 TTTT###  G#T

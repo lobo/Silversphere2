@@ -37,11 +37,7 @@ public class Water extends Floor implements Serializable {
 	public boolean setContent(Content content, Point boxActualPlace,Cardinal cardinal) throws PositionOutOfBoundsException {
 		Boolean ableToSetContent = super.setContent(content, boxActualPlace,cardinal);
 		if (ableToSetContent) {
-			if (content instanceof Ice || content instanceof Player) {
-				return content.remove();
-			} else {
-				content.getBoard().putCell(new WaterBox(), boxActualPlace);
-			}
+			content.react(boxActualPlace);
 		}
 		return ableToSetContent;
 	}

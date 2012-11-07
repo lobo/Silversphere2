@@ -37,4 +37,10 @@ public class Player extends Content implements Serializable {
 	public boolean move(Point going, Cardinal cardinal) {
 		return false;
 	}
+
+
+	@Override
+	public void react(Point actualPlace) {
+		remove();
+	}
 }

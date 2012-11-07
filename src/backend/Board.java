@@ -27,7 +27,7 @@ public class Board implements Serializable {
 		this.width = width;
 		board = new Cell[height][width];
 	}
-	
+
 	/**
 	 * Returns the board in its current state
 	 * 
@@ -54,7 +54,7 @@ public class Board implements Serializable {
 	public int getWidth() {
 		return width;
 	}
-	
+
 	/**
 	 * Returns the Board's Player
 	 * 
@@ -74,10 +74,12 @@ public class Board implements Serializable {
 	}
 
 	/**
-	 * Moves Player from one Cell to another in the direction of the given Cardinal
+	 * Moves Player from one Cell to another in the direction of the given
+	 * Cardinal
 	 * 
 	 * @param cardinal
-	 * @return True if Player was able to move or False if Player wasn't able to move
+	 * @return True if Player was able to move or False if Player wasn't able to
+	 *         move
 	 * @throws PositionOutOfBoundsException
 	 */
 	public boolean move(Cardinal cardinal) throws PositionOutOfBoundsException {
@@ -91,7 +93,7 @@ public class Board implements Serializable {
 			((ContentOperations) board[player.getPosition().x][player
 					.getPosition().y]).removeContent();
 			player.setPosition(cardinal);
-			
+
 			AbletoMove = true;
 		} else
 			AbletoMove = false;
@@ -116,7 +118,8 @@ public class Board implements Serializable {
 	 * 
 	 * @param cont
 	 * @param position
-	 * @return True if the Content given was able to placed on the board or False if it wasn't able to
+	 * @return True if the Content given was able to placed on the board or
+	 *         False if it wasn't able to
 	 */
 	public boolean putContent(Content cont, Point position) {
 		if (board[position.x][position.y] instanceof ContentOperations
@@ -156,21 +159,23 @@ public class Board implements Serializable {
 	public boolean isInterruptorActive() {
 		return (inter.getContent() instanceof Ice);
 	}
-	
+
 	/**
 	 * Sets inter as the board's interrupter
 	 * 
 	 * @param inter
 	 */
-	public void setInterruptor(Interruptor inter){
+	public void setInterruptor(Interruptor inter) {
 		this.inter = inter;
 	}
 
 	/**
 	 * Creates a new Point from the given Cardinal
 	 * 
-	 * @param p Actual point
-	 * @param c Cardinal with the direction
+	 * @param p
+	 *            Actual point
+	 * @param c
+	 *            Cardinal with the direction
 	 * @return New instance of point with the new position.
 	 */
 	public Point SetPositionCardinal(Point p, Cardinal c) {

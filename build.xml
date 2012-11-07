@@ -1,0 +1,44 @@
+<project name="poo-2012b-4" default="dist" basedir=".">
+
+	<!-- Compila el proyecto, deja los archivos class en el directorio bin -->
+	<target name="compile">
+		<mkdir dir="bin"/>
+		<javac srcdir="src" destdir="bin" classpath="lib/junit-4.7.jar"/>
+	</target>
+	
+	<!-- Crea la documentacion en formato Javadoc, en el directorio doc. -->
+	<target name="doc" depends="compile">
+		<javadoc sourcepath="src" destdir="doc" classpath="lib/junit-4.7.jar"/>
+	</target>
+
+	<!-- Ejecuta los tests. -->
+	<target name="tests" depends="compile">
+		<junit>
+			<formatter type="brief" usefile="false"/>
+			<classpath path="lib/junit-4.7.jar;bin" />
+			<!-- esto va -->
+			<classpath path="bin/test" />
+			<test name="backend.tests.TestBoard"/>
+			<test name="backend.tests.TestConstructors"/>
+			<test name="backend.tests.TestMovables"/>
+			<test name="backend.tests.TestMoving"/>
+			<test name="backend.tests.TestTarget"/>
+		</junit>
+	</target>
+	
+	<!-- Crea el jar ejecutable con todo el proyecto compilado. -->
+	<target name="dist" depends="compile, doc, tests">
+		<jar destfile="Silversphere.jar" basedir="bin">
+			<manifest>
+				<attribute name="Main-Class" value="frontend.MainWindow"/>
+			</manifest>
+		</jar>
+	</target>
+
+	<!-- Borra todos los archivos generados luego de compilar. -->
+	<target name="clean">
+		<delete dir="bin"/>
+		<delete dir="doc" />
+		<delete file="sample.jar" />
+	</target>
+</project>

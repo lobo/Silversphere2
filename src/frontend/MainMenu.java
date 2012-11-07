@@ -3,6 +3,8 @@ package frontend;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
@@ -11,6 +13,7 @@ import java.io.IOException;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
 import backend.Board;
@@ -124,3 +127,68 @@ public class MainMenu extends JFrame {
 		MainMenu mainMenu = new MainMenu();
 	}
 }
+
+
+/**
+ * Load del Sokoban
+ * 
+ * 
+ * public static void load(JButton aButton, final PanelSwapper swapper) {
+		aButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent event) {
+				JFileChooser fileopen = new JFileChooser();
+				JFrame jframeaux = new JFrame();
+
+				int ret = fileopen.showDialog(jframeaux.getContentPane(),
+						"Load game");
+				if (ret == JFileChooser.APPROVE_OPTION) {
+					File loadedGame = fileopen.getSelectedFile();
+					SaveandLoadGame play = new SaveandLoadGame();
+					Game aGame = null;
+					try {
+						aGame = play.LoadGame(loadedGame.getCanonicalPath());
+						swapper.newGame(aGame);
+					} catch (Exception e) {
+						JOptionPane.showMessageDialog(null, "Unable to Load File");
+						e.printStackTrace();
+					}
+					GamePanel.setStatusBar("File loaded: "
+							+ loadedGame.getAbsolutePath());
+				}
+			}
+		});
+	}
+
+	public static void load(JMenuItem anItem, final PanelSwapper swapper) {
+		anItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent event) {
+				JFileChooser fileopen = new JFileChooser();
+				JFrame jframeaux = new JFrame();
+
+				int ret = fileopen.showDialog(jframeaux.getContentPane(),
+						"Load game");
+				if (ret == JFileChooser.APPROVE_OPTION) {
+					File loadedGame = fileopen.getSelectedFile();
+					SaveandLoadGame play = new SaveandLoadGame();
+					Game aGame = null;
+					try {
+						aGame = play.LoadGame(loadedGame.getCanonicalPath());
+						swapper.newGame(aGame);
+					} catch (Exception e) {
+						JOptionPane.showMessageDialog(null, "load");
+						e.printStackTrace();
+					}
+					GamePanel.setStatusBar("File loaded: "
+							+ loadedGame.getAbsolutePath());
+				}
+			}
+		});
+	}
+ */
+
+
+
+
+

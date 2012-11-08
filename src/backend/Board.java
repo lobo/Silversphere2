@@ -158,9 +158,9 @@ public class Board implements Serializable {
 	 */
 	public boolean isInterruptorActive() {
 		Content aux = inter.getContent();
-		if(aux != null){
+		if (aux != null) {
 			return (inter.getContent().interuptorReact());
-		}else{
+		} else {
 			return false;
 		}
 	}

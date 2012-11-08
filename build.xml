@@ -18,8 +18,6 @@
 			<classpath path="lib/junit-4.7.jar;bin" />
 			<!-- esto va -->
 			<classpath path="bin/test" />
-			<test name="tests.SampleTest1"/>
-			<test name="tests.SampleTest2"/>
 			<test name="tests.TestBoard"/>
 			<test name="tests.TestMoving"/>
 		</junit>

@@ -46,6 +46,7 @@ public class TestBoard {
 			PositionOutOfBoundsException {
 		Point point = new Point(5, 5);
 		Board board = new Board(10,10);
+		board.putCell(new Floor(), point);
 		Content c = new Box(point, board);
 		assertTrue(board.putContent(c, point));
 
@@ -55,6 +56,7 @@ public class TestBoard {
 	public void InitializeBoardNullContent() throws InvalidBoardSizeException {
 		Point point = new Point(2, 5);
 		Board board = new Board(6,6);
+		board.putCell(new Floor(), point);
 
 		assertTrue(((ContentOperations) board.getBoard()[point.x][point.y])
 				.getContent() == null);

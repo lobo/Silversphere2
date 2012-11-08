@@ -106,6 +106,7 @@ public class GamePly extends JFrame {
 		addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(final KeyEvent e) {
+				if(board.getState().equals(State.PLAYING)){
 				switch (e.getKeyCode()) {
 				case KeyEvent.VK_LEFT:
 					board.move(Cardinal.WEST);
@@ -125,6 +126,8 @@ public class GamePly extends JFrame {
 					playerWon();
 					playerLost();
 
+			}
+			
 			}
 
 

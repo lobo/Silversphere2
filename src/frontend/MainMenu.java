@@ -62,7 +62,6 @@ public class MainMenu extends JFrame {
 					JFileChooser fileOpen = new JFileChooser();
 					fileOpen.setFileSelectionMode(JFileChooser.FILES_ONLY);
 					fileOpen.setAcceptAllFileFilterUsed(false);
-					// fileOpen.setFileFilter(filter);
 					int value = fileOpen.showDialog(
 							MainMenu.this.getContentPane(), "New Game");
 					if (value == JFileChooser.APPROVE_OPTION) {
@@ -76,6 +75,9 @@ public class MainMenu extends JFrame {
 							new MainMenu();
 						}
 						dispose();
+					}
+					else{
+						new MainMenu();
 					}
 				}
 			}
@@ -108,6 +110,9 @@ public class MainMenu extends JFrame {
     						new MainMenu();
     					}
                     }
+        				else{
+        					new MainMenu();
+        				}
 							dispose();
 					
         	}

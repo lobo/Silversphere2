@@ -19,7 +19,7 @@ public class EndScreen extends JDialog{
 		setLocationRelativeTo(null);
 		setResizable(false);
 		setSize(250,100);
-		setTitle("Juego terminado");
+		setTitle("Game Over");
 		centerScreen();
 		JLabel label = new JLabel("¡"+estado+"!", JLabel.CENTER);
 		

@@ -54,13 +54,13 @@ public class GamePly extends JFrame {
 	private void createMenuBar() {
 		JMenuBar menuBar = new JMenuBar();
 
-		JMenu menu = new JMenu("Juego");
+		JMenu menu = new JMenu("Game");
 		menuBar.add(menu);
 
 		this.add(menuBar);
-		JMenuItem gotoMenu = new JMenuItem("Ir a menu");
-		JMenuItem save = new JMenuItem("Guardar");
-		JMenuItem quit = new JMenuItem("Salir");
+		JMenuItem gotoMenu = new JMenuItem("Go to Main Menu");
+		JMenuItem save = new JMenuItem("Save");
+		JMenuItem quit = new JMenuItem("Exit");
 		gotoMenu.addActionListener(null);
 		menu.add(save);
 		menu.add(gotoMenu);
@@ -136,14 +136,14 @@ public class GamePly extends JFrame {
 	
 	private void playerLost() {
 		if(board.getState().equals(State.LOSE)){
-			new EndScreen(this, "PERDISTE").setVisible(true);
+			new EndScreen(this, "YOU LOSE").setVisible(true);
 		}
 		
 	}
 
 	private void playerWon() {
 		if(board.getState().equals(State.WIN)){
-			new EndScreen(this, "GANASTE").setVisible(true);
+			new EndScreen(this, "YOU WIN").setVisible(true);
 		}
 		
 	}

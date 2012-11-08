@@ -24,7 +24,7 @@ public class BackGroundMenu extends JPanel {
 	@Override
 	public void paint(Graphics g) {
 		Image imagen = Toolkit.getDefaultToolkit().getImage(
-				"./resources/dani.jpg");
+				"./resources/21_silversphere.jpg");
 		g.drawImage(imagen, 0, 0, getSize().width, getSize().height, this);
 		super.paint(g);
 	}

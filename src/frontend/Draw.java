@@ -31,14 +31,14 @@ public class Draw {
 
 	public Draw() throws IOException {
 
-		images.put(Box.class, "resources/box.png");
+		images.put(Box.class, "resources/block2.png");
 		images.put(Floor.class, "resources/cell.png");
-		images.put(Ice.class, "resources/ice-box.png");
-		images.put(Player.class, "resources/player.png");
+		images.put(Ice.class, "resources/ice3.png");
+		images.put(Player.class, "resources/link.png");
 		images.put(Water.class, "resources/water.png");
 		images.put(Tree.class, "resources/tree.png");
-		images.put(Target.class, "resources/target.png");
-		images.put(Interruptor.class, "resources/ice-box-target.png");
+		images.put(Target.class, "resources/mastersword.gif");
+		images.put(Interruptor.class, "resources/InterruptorA.gif");
 
 	}
 

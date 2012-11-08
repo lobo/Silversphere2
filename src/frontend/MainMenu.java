@@ -35,13 +35,13 @@ public class MainMenu extends JFrame {
 		setLocation(size.width / 2 - getWidth() / 2, size.height / 2
 				- getHeight() / 2);
 
-		JButton nuevo = new JButton("Nuevo Juego");
+		JButton nuevo = new JButton("New Game");
 		nuevo.setBounds(20, 150, 140, 25);
 		nuevo.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		JButton cargar = new JButton("Cargar Partida");
+		JButton cargar = new JButton("Load Game");
 		cargar.setBounds(20, 190, 140, 25);
 		cargar.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		JButton salir = new JButton("Salir");
+		JButton salir = new JButton("Exit");
 		salir.setBounds(20, 230, 140, 25);
 		salir.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
@@ -138,68 +138,3 @@ public class MainMenu extends JFrame {
 		MainMenu mainMenu = new MainMenu();
 	}
 }
-
-
-/**
- * Load del Sokoban
- * 
- * 
- * public static void load(JButton aButton, final PanelSwapper swapper) {
-		aButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent event) {
-				JFileChooser fileopen = new JFileChooser();
-				JFrame jframeaux = new JFrame();
-
-				int ret = fileopen.showDialog(jframeaux.getContentPane(),
-						"Load game");
-				if (ret == JFileChooser.APPROVE_OPTION) {
-					File loadedGame = fileopen.getSelectedFile();
-					SaveandLoadGame play = new SaveandLoadGame();
-					Game aGame = null;
-					try {
-						aGame = play.LoadGame(loadedGame.getCanonicalPath());
-						swapper.newGame(aGame);
-					} catch (Exception e) {
-						JOptionPane.showMessageDialog(null, "Unable to Load File");
-						e.printStackTrace();
-					}
-					GamePanel.setStatusBar("File loaded: "
-							+ loadedGame.getAbsolutePath());
-				}
-			}
-		});
-	}
-
-	public static void load(JMenuItem anItem, final PanelSwapper swapper) {
-		anItem.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent event) {
-				JFileChooser fileopen = new JFileChooser();
-				JFrame jframeaux = new JFrame();
-
-				int ret = fileopen.showDialog(jframeaux.getContentPane(),
-						"Load game");
-				if (ret == JFileChooser.APPROVE_OPTION) {
-					File loadedGame = fileopen.getSelectedFile();
-					SaveandLoadGame play = new SaveandLoadGame();
-					Game aGame = null;
-					try {
-						aGame = play.LoadGame(loadedGame.getCanonicalPath());
-						swapper.newGame(aGame);
-					} catch (Exception e) {
-						JOptionPane.showMessageDialog(null, "load");
-						e.printStackTrace();
-					}
-					GamePanel.setStatusBar("File loaded: "
-							+ loadedGame.getAbsolutePath());
-				}
-			}
-		});
-	}
- */
-
-
-
-
-

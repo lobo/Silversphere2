@@ -13,8 +13,7 @@ import exceptions.*;
 
 public class TestBoard {
 	@Before
-	public void SetUp() {
-
+	public void SetUp(){
 	}
 
 	@Test
@@ -30,22 +29,8 @@ public class TestBoard {
 		Board board = new Board(5,5);
 
 		assertFalse(board.validPosition(position));
-
 	}
 
-	@Test
-	public void NotValidPositioninBoard2() throws InvalidBoardSizeException {
-		Point position = new Point(-5, -5);
-		Board board = new Board(5,5);
-
-		assertFalse(board.validPosition(position));
-
-	}
-
-	@Test(expected = InvalidBoardSizeException.class)
-	public void ErrorCreatingNegativeBoard() throws InvalidBoardSizeException {
-		Board board = new Board(-5,-5);
-	}
 
 	@Test(expected = IndexOutOfBoundsException.class)
 	public void IndexOutofBoundExceptionInBoard()
@@ -74,5 +59,4 @@ public class TestBoard {
 		assertTrue(((ContentOperations) board.getBoard()[point.x][point.y])
 				.getContent() == null);
 	}
-
 }

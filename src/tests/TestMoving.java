@@ -5,32 +5,18 @@ import static org.junit.Assert.assertTrue;
 
 import java.awt.Point;
 
+import org.junit.Before;
 import org.junit.Test;
 
-import backend.Board;
-import backend.Box;
-import backend.Cardinal;
-import backend.Ice;
-import backend.Player;
-import backend.Tree;
-import backend.Water;
-import exceptions.InvalidBoardSizeException;
-import exceptions.PositionOutOfBoundsException;
+import backend.*;
+import exceptions.*;
 
 public class TestMoving {
-	@Test
-	public void MovePlayerNORTHtoEmptyFloor() throws InvalidBoardSizeException,
-			PositionOutOfBoundsException {
-
-		Board board = new Board(15, 10);
-		Player player = new Player(new Point(5, 5), board);
-		board.putContent(player, player.getPosition());
-		board.setPlayer(player);
-
-		assertTrue(board.move(Cardinal.NORTH));
-
+	@Before
+	public void SetUp(){
 	}
-
+	
+	@Test
 	public void MovePlayerToSamePositionBefore()
 			throws InvalidBoardSizeException, PositionOutOfBoundsException {
 
@@ -41,26 +27,6 @@ public class TestMoving {
 
 		board.move(Cardinal.NORTH);
 		assertTrue(board.move(Cardinal.SOUTH));
-	}
-
-	@Test
-	public void MoveToWaterandIceBeRemoved() throws InvalidBoardSizeException,
-			PositionOutOfBoundsException {
-
-		Board board = new Board(10, 10);
-		Player player = new Player(new Point(5, 5), board);
-		board.putContent(player, player.getPosition());
-		board.setPlayer(player);
-		Point nextPosition = board.SetPositionCardinal(player.getPosition(),
-				Cardinal.SOUTH);
-
-		Ice ice = new Ice(nextPosition, board);
-		board.putContent(ice, nextPosition);
-		board.putCell(new Water(),
-				board.SetPositionCardinal(nextPosition, Cardinal.SOUTH));
-
-		assertTrue(board.move(Cardinal.SOUTH));
-		// assertTrue(((ContentOperations)(board.getTile(nextPosition))).getContent()==null);
 	}
 
 	@Test
@@ -75,8 +41,8 @@ public class TestMoving {
 		Point nextPosition = board.SetPositionCardinal(player.getPosition(),
 				Cardinal.SOUTH);
 
-		Box box = new Box(nextPosition, board);
-		board.putContent(box, nextPosition);
+		Ice ice = new Ice(nextPosition, board);
+		board.putContent(ice, nextPosition);
 		board.putCell(new Water(),
 				board.SetPositionCardinal(nextPosition, Cardinal.SOUTH));
 
@@ -104,8 +70,6 @@ public class TestMoving {
 	@Test
 	public void MovePlayerToTileWithMovingBox()
 			throws InvalidBoardSizeException, PositionOutOfBoundsException {
-		// Si la posicion es 5,5 no me deja moverme al norte, tira error (pero
-		// nadie avisa)
 
 		Board board = new Board(10, 10);
 		Player player = new Player(new Point(5, 3), board);
@@ -118,14 +82,6 @@ public class TestMoving {
 		board.putContent(myBox, nextPosition);
 
 		assertTrue(board.move(Cardinal.EAST));
-		/*
-		 * assertTrue(myBox.move(myBox.getPosition(), Cardinal.EAST)); // OK.
-		 * assertTrue(board.getTile(nextPosition).setContent(board.getSmile(),
-		 * nextPosition, new Point(board.SetPositionCardinal(nextPosition,
-		 * Cardinal.EAST)), Cardinal.EAST)); // OK.
-		 * assertTrue(board.validPosition(nextPosition)); // OK.
-		 */
-
 	}
 
 }

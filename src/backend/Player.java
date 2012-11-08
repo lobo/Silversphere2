@@ -39,12 +39,21 @@ public class Player extends Content implements Serializable {
 	}
 
 
+	/**
+	 * If an Player is set to a Water cell, it is removed from play
+	 * 
+	 */
 	@Override
 	public void react(Point actualPlace) {
 		remove();
 	}
 
 
+	/**
+	 * Always returns False since Player doesn't activate the interrupter
+	 * 
+	 * @return False always
+	 */
 	@Override
 	public boolean interuptorReact() {
 		return false;

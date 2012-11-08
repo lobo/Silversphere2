@@ -43,7 +43,7 @@ public class GamePly extends JFrame {
 		setLayout(new BorderLayout());
 		setVisible(true);
 		createMenuBar();
-		setSize(board.getHeight()*CELL_SIZE + 50, board.getWidth()*CELL_SIZE + 50);
+		setSize (board.getWidth()*CELL_SIZE + 20,board.getHeight()*CELL_SIZE + 70 );
 		gp = new GamePan(board, this);
 		handleInput();
 		add(gp);

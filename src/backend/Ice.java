@@ -54,11 +54,20 @@ public class Ice extends Box implements Serializable {
 		return true;
 	}
 	
+	/**
+	 * If an Ice is set to a Water cell, it is removed from play
+	 * 
+	 */
 	@Override
 	public void react(Point actualPlace) {
 		remove();
 	}
 	
+	/**
+	 * Always returns True since Ice activates the interrupter
+	 * 
+	 * @return True always
+	 */
 	@Override
 	public boolean interuptorReact() {
 		return true;

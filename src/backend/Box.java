@@ -61,12 +61,20 @@ public class Box extends Content implements Serializable {
 		return false;
 	}
 	
+	/**
+	 * If a box is placed in a Water cell, the cell changes to a WaterBox
+	 * 
+	 */
 	public void react(Point boxActualPlace){
 		getBoard().putCell(new WaterBox(), boxActualPlace);
 	}
 
 
-	@Override
+	/**
+	 *Always returns False since Box doesn't activate the interrupter 
+	 *
+	 *@return False always 
+	 */
 	public boolean interuptorReact() {
 		return false;
 	}

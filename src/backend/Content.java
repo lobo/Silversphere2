@@ -52,6 +52,7 @@ public abstract class Content implements Serializable {
 	/**
 	 * Returns the content's Board
 	 * 
+	 * @return Board board
 	 */
 	public Board getBoard() {
 		return board;
@@ -60,12 +61,24 @@ public abstract class Content implements Serializable {
 	/**
 	 * Returns position of content
 	 * 
+	 * @return Point position
 	 */
 	public Point getPosition() {
 		return position;
 	}
 	
+	/**
+	 * Executes what would happen if certain content reacts with a water cell
+	 * 
+	 * @param ActualPlace
+	 */
 	public abstract void react(Point ActualPlace);
 	
+	/**
+	 * Returns whether or not the interruptor's content is an ice cube
+	 * 
+	 * @return True if content is an instance of Ice
+	 * 		   False if not
+	 */
 	public abstract boolean interuptorReact();
 }

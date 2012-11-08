@@ -35,7 +35,7 @@ public class GamePan extends JPanel {
 		}
 
 		setLayout(null);
-		setSize((b.getWidth()) * CELL_SIZE, (b.getHeight()) * CELL_SIZE);
+		setSize ((b.getWidth()) * CELL_SIZE,(b.getHeight()) * CELL_SIZE);
 
 		board = b;
 		bpanel = new BoardPanel(board.getHeight(), board.getWidth(), CELL_SIZE);

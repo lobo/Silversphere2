@@ -9,7 +9,7 @@ public abstract class Content implements Serializable {
 
 	private final Point position;
 	private final Board board;
-	
+
 	/**
 	 * Creates a new Content
 	 * 
@@ -36,12 +36,12 @@ public abstract class Content implements Serializable {
 	/**
 	 * Moves Content from one Position to a Cardinal given
 	 * 
-	 * @param going
+	 * @param actualPlace
 	 * @param cardinal
 	 * @return True if movement was successful, False if not
 	 */
 	public abstract boolean move(Point actualPlace, Cardinal cardinal);
-	
+
 	/**
 	 * Removes content from play
 	 * 
@@ -66,19 +66,18 @@ public abstract class Content implements Serializable {
 	public Point getPosition() {
 		return position;
 	}
-	
+
 	/**
 	 * Executes what would happen if certain content reacts with a water cell
 	 * 
 	 * @param ActualPlace
 	 */
 	public abstract void react(Point ActualPlace);
-	
+
 	/**
 	 * Returns whether or not the interruptor's content is an ice cube
 	 * 
-	 * @return True if content is an instance of Ice
-	 * 		   False if not
+	 * @return True if content is an instance of Ice False if not
 	 */
 	public abstract boolean interuptorReact();
 }

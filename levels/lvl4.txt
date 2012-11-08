@@ -1,11 +1,11 @@
-TTTTTTTTTTTT
-T@ TTTT####T
-  B #######T
-T B #######T
-T B ##  K #T
-T B ## B  #T
-T  C### ###T
-T   #######T
-T   ###  ##T
-TTTT###  G#T
-TTTTTTTTTTTT
+TTTTTTTTTTTTTTTTTTT
+ @ TTTT#####    ##T
+  B ########  K ##T
+T B ###   ###B  ##T
+T B ##  B ###   ##T
+T B ## B#B###   ##T
+T  C### ##########T
+T BB####  ##   ###T
+T B ##  B ##  BB##T
+TTTT###BG####   ##T
+TTTTTTTTTTTTTTTTTTT

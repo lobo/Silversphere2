@@ -56,7 +56,6 @@ public class TestBoard {
 		Point point = new Point(2, 5);
 		Board board = new Board(6,6);
 
-		assertTrue(((ContentOperations) board.getBoard()[point.x][point.y])
-				.getContent() == null);
+		assertTrue(((ContentOperations) board.getBoard()[point.x][point.y]).getContent() == null);
 	}
 }

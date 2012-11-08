@@ -87,11 +87,8 @@ public class Board implements Serializable {
 		Boolean AbletoMove;
 		Point toPoint = SetPositionCardinal(player.getPosition(), cardinal);
 
-		if (validPosition(toPoint)
-				&& board[toPoint.x][toPoint.y].setContent(player, toPoint,
-						cardinal)) {
-			((ContentOperations) board[player.getPosition().x][player
-					.getPosition().y]).removeContent();
+		if (validPosition(toPoint) && board[toPoint.x][toPoint.y].setContent(player, toPoint,cardinal)) {
+			((ContentOperations) board[player.getPosition().x][player.getPosition().y]).removeContent();
 			player.setPosition(cardinal);
 
 			AbletoMove = true;

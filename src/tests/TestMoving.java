@@ -21,7 +21,10 @@ public class TestMoving {
 			throws InvalidBoardSizeException, PositionOutOfBoundsException {
 
 		Board board = new Board(15, 10);
-		Player player = new Player(new Point(5, 5), board);
+		Point pos = new Point(5,5);
+		Player player = new Player(pos, board);
+		board.putCell(new Floor(), pos);
+		board.putCell(new Floor(), board.SetPositionCardinal(player.getPosition(),Cardinal.NORTH));
 		board.putContent(player, player.getPosition());
 		board.setPlayer(player);
 
@@ -30,21 +33,26 @@ public class TestMoving {
 	}
 
 	@Test
-	public void MoveIcetoWaterRemoveItandMovePlayerToo()
+	public void MoveBoxToWaterandMovePlayerToo()
 			throws InvalidBoardSizeException, PositionOutOfBoundsException {
 
 		Board board = new Board(13, 9);
-		Player player = new Player(new Point(5, 5), board);
+		Point pos = new Point(5,5);
+		Player player = new Player(pos, board);
+		board.putCell(new Floor(), pos);
 		board.putContent(player, player.getPosition());
 		board.setPlayer(player);
 
 		Point nextPosition = board.SetPositionCardinal(player.getPosition(),
 				Cardinal.SOUTH);
 
-		Ice ice = new Ice(nextPosition, board);
-		board.putContent(ice, nextPosition);
-		board.putCell(new Water(),
-				board.SetPositionCardinal(nextPosition, Cardinal.SOUTH));
+		Box box = new Box(nextPosition, board);
+		board.putCell(new Floor(), nextPosition);
+		board.putContent(box, nextPosition);
+		
+		Point nextPosition2 = board.SetPositionCardinal(nextPosition, Cardinal.SOUTH);
+		
+		board.putCell(new Water(),nextPosition2);
 
 		board.move(Cardinal.SOUTH);
 
@@ -56,7 +64,9 @@ public class TestMoving {
 			throws InvalidBoardSizeException, PositionOutOfBoundsException {
 
 		Board board = new Board(11, 14);
-		Player player = new Player(new Point(5, 5), board);
+		Point pos = new Point(5,5);
+		Player player = new Player(pos, board);
+		board.putCell(new Floor(), pos);
 		board.putContent(player, player.getPosition());
 		board.setPlayer(player);
 
@@ -72,14 +82,20 @@ public class TestMoving {
 			throws InvalidBoardSizeException, PositionOutOfBoundsException {
 
 		Board board = new Board(10, 10);
-		Player player = new Player(new Point(5, 3), board);
+		Point pos = new Point(5,3);
+		Player player = new Player(pos, board);
+		
+		board.putCell(new Floor(), pos);
 		board.putContent(player, player.getPosition());
 		board.setPlayer(player);
 		Point nextPosition = board.SetPositionCardinal(player.getPosition(),
 				Cardinal.EAST);
 		Box myBox = new Box(nextPosition, board);
-
+		
+		board.putCell(new Floor(), nextPosition);
 		board.putContent(myBox, nextPosition);
+		board.putCell(new Floor(), board.SetPositionCardinal(nextPosition,
+				Cardinal.EAST));
 
 		assertTrue(board.move(Cardinal.EAST));
 	}

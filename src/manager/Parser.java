@@ -77,7 +77,7 @@ public class Parser {
 	 *            A string representing a line of the file.
 	 * @return A new string without tabs.
 	 */
-	private String deleteTabs(String line) {
+	public String deleteTabs(String line) {
 		char aux;
 		String resp = new String();
 		for (int i = 0; i < line.length(); i++) {
@@ -94,7 +94,7 @@ public class Parser {
 	 *            An array of strings representing each of the parameters of a
 	 *            line separated by a comma.
 	 */
-	private void checkElementsValues(String line, int rowActual) {
+	public void checkElementsValues(String line, int rowActual) {
 		int index = 0;
 		Content element = null;
 		Cell cell = null;
@@ -188,6 +188,10 @@ public class Parser {
 		if(((symbol == PLAYER) && (playerExists)) || ((symbol == TARGET) && (targetExists)) || ((symbol == INTERRUPTOR) && (interruptorExists))){
 			throw new ParsingException();
 		} 
+	}
+	
+	public void setPlayerExists(){
+		playerExists = true;
 	}
 
 }

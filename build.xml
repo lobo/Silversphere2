@@ -27,7 +27,7 @@
 	<target name="dist" depends="compile, doc, tests">
 		<jar destfile="Silversphere.jar" basedir="bin">
 			<manifest>
-				<attribute name="Main-Class" value="frontend.MainWindow"/>
+				<attribute name="Main-Class" value="frontend.MainMenu"/>
 			</manifest>
 		</jar>
 	</target>

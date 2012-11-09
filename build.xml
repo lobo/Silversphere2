@@ -3,7 +3,7 @@
 	<!-- Compila el proyecto, deja los archivos class en el directorio bin -->
 	<target name="compile">
 		<mkdir dir="bin"/>
-		<javac srcdir="src" destdir="bin" classpath="lib/junit-4.7.jar"/>
+		<javac srcdir="src" destdir="bin" includeantruntime="false" classpath="lib/junit-4.7.jar"/>
 	</target>
 	
 	<!-- Crea la documentacion en formato Javadoc, en el directorio doc. -->
